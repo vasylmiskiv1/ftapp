@@ -4,6 +4,7 @@
     fxLayoutAlign="center center"
     #f="ngForm"
     (ngSubmit)="onSubmit(f)"
+    fxLayoutGap="10px"
   > 
     <mat-form-field>
       <input 
@@ -38,14 +39,27 @@
         matInput 
         placeholder="Your birthdate" 
         [matDatepicker]="picker"
+        [max]="maxDate"
+        ngModel
+        name="birthdate"
+        required
       >
-      <mat-datepicker-toggle matSuffix  [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle 
+        matSuffix  
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field> 
+
+      <mat-checkbox>
+        Agree to Terms and Conditions        
+      </mat-checkbox>
+
     <button
       mat-raised-button
       type="submit"
       color="primary"
+      [disabled]="f.invalid"
     >Submit</button>
   </form>
 </section>
